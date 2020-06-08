@@ -127,9 +127,6 @@ Meteor.methods({
         saml: {
           enabled: Boolean,
         },
-        web3: {
-          enabled: Boolean,
-        },
       },
       settings: {
         disallowGuests: Boolean,

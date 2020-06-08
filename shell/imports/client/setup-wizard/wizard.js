@@ -58,7 +58,8 @@ const setupIsStepCompleted = {
       providerEnabled("google") ||
       providerEnabled("github") ||
       providerEnabled("ldap") ||
-      providerEnabled("saml")
+      providerEnabled("saml") ||
+      providerEnabled("web3")
     );
   },
 
