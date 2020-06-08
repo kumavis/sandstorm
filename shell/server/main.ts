@@ -88,6 +88,7 @@ import "../imports/server/core.js";
 import "../imports/server/demo-server.js";
 import "../imports/server/desktop-notifications-server.js";
 import "../imports/server/dev-accounts-server.js";
+import "../imports/server/web3-accounts-server.js";
 import "../imports/server/gateway-router.js";
 import "../imports/server/grain-server.js";
 import "../imports/server/hack-session.js";
@@ -107,6 +108,7 @@ import "../imports/server/transfers-server.js";
 
 import "../imports/shared/admin.js";
 import "../imports/shared/dev-accounts.js";
+import "../imports/shared/web3-accounts.js";
 import "../imports/shared/grain-shared.js";
 
 import "../imports/server/testing.js";

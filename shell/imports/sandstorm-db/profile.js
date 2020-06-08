@@ -226,6 +226,11 @@ SandstormDb.fillInProfileDefaults = function (credential, profile) {
     profile.pronoun = profile.pronoun ||
         (_.contains(["alice", "carol", "eve"], lowerCaseName) ? "female" :
          _.contains(["bob", "dave"], lowerCaseName) ? "male" : "neutral");
+  } else if (services.web3) {
+    const lowerCaseName = "eth" + services.web3.address.split(" ")[0].toLowerCase();
+    profile.name = profile.name || services.web3.address;
+    profile.handle = profile.handle || filterHandle(lowerCaseName);
+    profile.pronoun = profile.pronoun || 'neutral';
   } else if (services.demo) {
     profile.name = profile.name || "Demo User";
     profile.handle = profile.handle || "demo";
@@ -258,6 +263,8 @@ SandstormDb.getIntrinsicName = function (credential, usePrivate) {
     return services.email.email;
   } else if (services.dev) {
     return services.dev.name;
+  } else if (services.web3) {
+    return services.web3.address;
   } else if (services.demo) {
     return "demo on " + credential.createdAt.toISOString().substring(0, 10);
   } else if (services.ldap) {

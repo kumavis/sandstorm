@@ -683,6 +683,13 @@
         "cancelButton": "Cancel",
         "disableButton": "Disable"
       },
+      "adminIdentityProviderConfigureWeb3": {
+        "title": "Web3 login configuration",
+        "saveButton": "Save",
+        "enableButton": "Enable",
+        "cancelButton": "Cancel",
+        "disableButton": "Disable"
+      },
       "adminIdentityProviderTable": {
         "title": "Login provider",
         "status": "Status"

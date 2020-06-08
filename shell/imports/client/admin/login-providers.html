@@ -386,6 +386,43 @@
 {{/modalDialogWithBackdrop}}
 </template>
 
+
+<template name="adminLoginProviderConfigureWeb3">
+{{#modalDialogWithBackdrop onDismiss=onDismiss}}
+  {{#let txt="admin.identityProviders.adminIdentityProviderConfigureWeb3"}}
+  <h2>{{_ (con txt "title")}}</h2>
+
+  {{#if formerBaseUrl}}
+    <p class="flash-message warning-message" tabindex="-1">
+      {{{_ (con txt "formerBaseUrlWarning") former=formerBaseUrl current=siteUrl}}}
+    </p>
+  {{/if}}
+
+  <pre>
+    metamask fox says: get hype!
+  </pre>
+
+  <div class="idp-modal-button-row">
+    <button class="idp-modal-save" disabled="{{saveDisabled}}">
+      {{#if web3Enabled}}
+      {{_ (con txt "saveButton")}}
+      {{else}}
+      {{_ (con txt "enableButton")}}
+      {{/if}}
+    </button>
+    <button class="idp-modal-cancel">
+      {{_ (con txt "cancelButton")}}
+    </button>
+    {{#if web3Enabled}}
+    <button class="idp-modal-disable">
+      {{_ (con txt "disableButton")}}
+    </button>
+    {{/if}}
+  </div>
+  {{/let}}
+{{/modalDialogWithBackdrop}}
+</template>
+
 <template name="adminLoginProviderTable">
 {{#let txt="admin.identityProviders.adminIdentityProviderTable"}}
 {{!-- Expects an empty data context. --}}

@@ -107,6 +107,9 @@ Accounts.onCreateUser(function (options, user) {
   if (user.services && user.services.dev) {
     check(user.services.dev, { name: String, isAdmin: Boolean, hasCompletedSignup: Boolean });
     serviceUserId = user.services.dev.name;
+  } else if (user.services && user.services.web3) {
+    check(user.services.web3, { address: String, name: String, isAdmin: Boolean, hasCompletedSignup: Boolean });
+    serviceUserId = user.services.web3.address;
   } else if ("expires" in user) {
     serviceUserId = user._id;
     user.services = { demo: {} };

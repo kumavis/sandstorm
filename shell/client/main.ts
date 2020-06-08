@@ -145,6 +145,7 @@ import "../imports/client/admin-client.js";
 import "../imports/client/demo-client.js";
 import "../imports/client/desktop-notifications-client.js";
 import "../imports/client/dev-accounts-client.js";
+import "../imports/client/web3-accounts-client.js";
 import "../imports/client/grain-client.js";
 import "../imports/client/install-client.js";
 import "../imports/client/notifications-client.js";
@@ -156,6 +157,7 @@ import "../imports/client/transfers-client.js";
 
 import "../imports/shared/admin.js";
 import "../imports/shared/dev-accounts.js";
+import "../imports/shared/web3-accounts.js";
 import "../imports/shared/grain-shared.js";
 
 import "../imports/client/testing.js";

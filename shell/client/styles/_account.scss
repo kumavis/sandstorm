@@ -150,6 +150,12 @@ body>.popup.account>.frame-container {
       color: #191919;
     }
   }
+  >button.login.web3 {
+    background-image: url("/debug.svg");
+    &:hover {
+      background-image: url("/debug-m.svg");
+    }
+  }
   >form.email {
     background-image: url("/email.svg");
     &:hover {

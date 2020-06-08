@@ -15,6 +15,7 @@ const idpData = function (configureCallback) {
   const githubEnabled = (githubSetting && githubSetting.value) || false;
   const ldapEnabled = globalDb.getSettingWithFallback("ldap", false);
   const samlEnabled = globalDb.getSettingWithFallback("saml", false);
+  const web3Enabled = globalDb.getSettingWithFallback("web3", false);
   return [
     {
       id: "email-token",
@@ -66,6 +67,16 @@ const idpData = function (configureCallback) {
       popupTemplate: "adminLoginProviderConfigureSaml",
       onConfigure() {
         configureCallback("saml");
+      },
+    },
+    {
+      id: "web3",
+      label: "Web3",
+      icon: "/debug.svg", // Or use identicons
+      enabled: web3Enabled,
+      popupTemplate: "adminLoginProviderConfigureWeb3",
+      onConfigure() {
+        configureCallback("web3");
       },
     },
   ];
@@ -756,5 +767,39 @@ Template.adminLoginProviderConfigureSaml.events({
     // double invocation because there's no way to pass a callback function around in Blaze without
     // invoking it, and we need to pass it to modalDialogWithBackdrop
     instance.data.onDismiss()();
+  },
+});
+
+Template.adminLoginProviderConfigureWeb3.events({
+  "click .idp-modal-save"(evt) {
+    const instance = Template.instance();
+    const token = Iron.controller().state.get("token");
+    Meteor.call("setAccountSetting", token, "web3", true, instance.setAccountSettingCallback);
+    // this is somehow not getting set, needed for auth with web3
+    // globalDb.collections.settings.findOne({ _id: 'web3' });
+  },
+
+  "click .idp-modal-disable"(evt) {
+    const instance = Template.instance();
+    const token = Iron.controller().state.get("token");
+    Meteor.call("setAccountSetting", token, "web3", false, instance.setAccountSettingCallback);
+  },
+
+  "click .idp-modal-cancel"(evt) {
+    const instance = Template.instance();
+    // double invocation because there's no way to pass a callback function around in Blaze without
+    // invoking it, and we need to pass it to modalDialogWithBackdrop
+    instance.data.onDismiss()();
+  },
+});
+
+Template.adminLoginProviderConfigureWeb3.helpers({
+  web3Enabled() {
+    return globalDb.getSettingWithFallback("web3", false);
+  },
+
+  errorMessage() {
+    const instance = Template.instance();
+    return instance.errorMessage.get();
   },
 });
